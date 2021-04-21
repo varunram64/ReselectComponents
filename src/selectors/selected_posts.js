@@ -1,25 +1,27 @@
 // Reselect selector
-// Takes a list of posts and post Ids, and picks out
-// the selected Posts
+// Takes a list of posts and post IDs 
+// and picks out selected posts
+
 import _ from 'lodash';
 import { createSelector } from 'reselect';
 
-// Create select functions to pick off the pieces of state we care about
-// for this calculation
-const postsSelector = state => state.posts
-const selectedPostsSelector = state => state.selectedPostIds
+// Create select functions to pick off the pieces of state
+// that we care about for this calculation
+
+const postsSelector = state => state.posts;
+
+const selectedPostsSelector = state => state.selectedPostIds;
 
 const getPosts = (posts, selectedPostIds) => {
-  const selectedPosts = _.filter(
-    posts,
-    post => _.contains(selectedPostIds, post.id)
-  );
+    const selectedPosts = _.filter(posts, post => {
+        _.contains(selectedPostIds, post.id);
+    });
 
-  return selectedPosts;
-};
+    return selectedPosts;
+}
 
 export default createSelector(
-  postsSelector, // pick off a piece of state
-  selectedPostsSelector, // pick off a piece of state
-  getPosts // last argument is the function that has our select logic
+    postsSelector, // pick off a piece of state
+    selectedPostsSelector, // pick off a piece of state
+    getPosts // last argument is the function that has select logic
 );
