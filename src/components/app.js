@@ -1,5 +1,4 @@
 import React from 'react';
-import { Component } from 'react';
 
 import Posts from 'components/posts_list';
 import SelectedPostsList from 'components/selected_posts_list';
